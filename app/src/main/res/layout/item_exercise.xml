@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvExerciseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dohyeon1"
+            android:text="Exercise Date"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvExerciseName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dohyeon1"
+            android:paddingTop="30dp"
+            android:text="Exercise Name"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dohyeon1"
+            android:paddingLeft="80dp"
+            android:paddingTop="60dp"
+            android:text="Kg"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dohyeon1"
+            android:paddingLeft="200dp"
+            android:paddingTop="60dp"
+            android:text="Reps"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/set1Kg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="70dp"
+            android:paddingTop="90dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/set2Kg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="70dp"
+            android:paddingTop="120dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/set3Kg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="70dp"
+            android:paddingTop="150dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/set1Rep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="190dp"
+            android:paddingTop="90dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/set2Rep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="190dp"
+            android:paddingTop="120dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/set3Rep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="190dp"
+            android:paddingTop="150dp"
+            android:text="TextView" />
+    </FrameLayout>
+
+    <!-- More views for each item if necessary -->
+</LinearLayout>

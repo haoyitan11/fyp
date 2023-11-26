@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="lightGrey">#DCDCDC</color>
+    <color name="grey">#9E9E9E</color>
+
+    <!--    background gradient-->
+    <color name="start_color">#708090</color>
+    <color name="mid_color">#153259</color>
+    <color name="end_color">#0D2340</color>
+
+    <!--    button gradient-->
+    <color name="button_start_color">#0D2340</color>
+    <color name="button_mid_color">#153259</color>
+    <color name="button_end_color">#708090</color>
+</resources>
