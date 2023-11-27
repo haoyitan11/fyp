@@ -7,7 +7,8 @@
     <item android:title="Profile"
         android:id="@+id/profile"
         android:icon="@drawable/baseline_person_24"/>
-    <item android:title="Exercise"
-        android:id="@+id/exercise"
-        android:icon="@drawable/baseline_accessibility_new_24" />
+    <item
+        android:id="@+id/workout"
+        android:icon="@drawable/baseline_accessibility_new_24"
+        android:title="Workout" />
 </menu>

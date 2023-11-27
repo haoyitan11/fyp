@@ -9,13 +9,14 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ExerciseAdd : AppCompatActivity() {
+class WorkoutAdd : AppCompatActivity() {
 
     private var setCount = 1
     private lateinit var plusIcon: ImageView
@@ -27,16 +28,16 @@ class ExerciseAdd : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.exerciseadd)
+        setContentView(R.layout.workoutadd)
 
         plusIcon = findViewById(R.id.plusIcon)
         chervonLeft = findViewById(R.id.chervonleft2)
-        exerciseNameTextView = findViewById(R.id.exerciseName)
+        exerciseNameTextView = findViewById(R.id.workoutName)
         setsContainer = findViewById(R.id.setsContainer)
-        calendarView = findViewById(R.id.exerciseDate)
+        calendarView = findViewById(R.id.workoutDate)
 
-        val exerciseName = intent.getStringExtra("EXERCISE_NAME")
-        exerciseNameTextView.text = exerciseName
+        val workoutName = intent.getStringExtra("EXERCISE_NAME")
+        exerciseNameTextView.text = workoutName
 
         findViewById<Button>(R.id.addSetButton).setOnClickListener {
             addNewSet()
@@ -51,10 +52,17 @@ class ExerciseAdd : AppCompatActivity() {
         }
 
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            val calendar = Calendar.getInstance()
-            calendar.set(year, month, dayOfMonth)
-            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            selectedDate = sdf.format(calendar.time)
+            val selectedCalendar = Calendar.getInstance()
+            selectedCalendar.set(year, month, dayOfMonth)
+            val currentCalendar = Calendar.getInstance()
+
+            if (selectedCalendar.after(currentCalendar)) {
+                Toast.makeText(this, "Please select today's date or a previous date", Toast.LENGTH_SHORT).show()
+                calendarView.date = currentCalendar.timeInMillis // Reset to current date
+            } else {
+                val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                selectedDate = sdf.format(selectedCalendar.time)
+            }
         }
 
         if (selectedDate.isEmpty()) {
@@ -112,9 +120,20 @@ class ExerciseAdd : AppCompatActivity() {
     }
 
     private fun showConfirmationDialog() {
+        val set1Layout = setsContainer.getChildAt(0) as LinearLayout
+        val set1RepsEditText = set1Layout.getChildAt(2) as EditText
+
+        val set1Reps = set1RepsEditText.text.toString()
+
+        if (set1Reps.isEmpty()) {
+            // Display Toast if set1 reps value is empty
+            Toast.makeText(this, "Please write set 1 reps value", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         AlertDialog.Builder(this)
             .setTitle("Confirm")
-            .setMessage("Do you want to add this exercise data?")
+            .setMessage("Do you want to add this workout data?")
             .setPositiveButton("Yes") { _, _ ->
                 saveDataToFirebase()
             }
@@ -124,7 +143,7 @@ class ExerciseAdd : AppCompatActivity() {
 
     private fun saveDataToFirebase() {
         try {
-            val exerciseName = exerciseNameTextView.text.toString()
+            val workoutName = exerciseNameTextView.text.toString()
             val setsData = mutableListOf<Map<String, Any>>()
 
             for (i in 0 until setsContainer.childCount) {
@@ -145,23 +164,39 @@ class ExerciseAdd : AppCompatActivity() {
             // Check if there is at least one set with data
             if (setsData.isNotEmpty()) {
                 val db = FirebaseFirestore.getInstance()
+                val documentName = "Workout${System.currentTimeMillis()}"
 
-                // Create a new document with a dynamic name
-                val documentName = "Exercise${System.currentTimeMillis()}"
-                val exerciseData = hashMapOf(
-                    "exerciseName" to exerciseName,
-                    "date" to selectedDate,
-                    "sets" to setsData
-                )
+                // Get the current counter value from the database
+                db.collection("Counters").document("workoutIdCounter")
+                    .get()
+                    .addOnSuccessListener { documentSnapshot ->
+                        var counter = documentSnapshot.getLong("counter") ?: 1000L
 
-                db.collection("ExerciseData")
-                    .document(documentName)
-                    .set(exerciseData)
-                    .addOnSuccessListener {
-                        Log.d("Firestore", "DocumentSnapshot added with ID: $documentName")
-                    }
-                    .addOnFailureListener { e ->
-                        Log.e("Firestore", "Error adding document", e)
+                        // Increment the counter
+                        counter++
+
+                        // Update the counter in the database
+                        db.collection("Counters").document("workoutIdCounter")
+                            .set(mapOf("counter" to counter))
+
+                        // Create a new document with the incremented counter as workoutId
+                        val workoutData = hashMapOf(
+                            "workoutId" to counter.toString(), // Convert counter to a string
+                            "workoutName" to workoutName,
+                            "date" to selectedDate,
+                            "sets" to setsData
+                        )
+
+                        db.collection("WorkoutData")
+                            .document(documentName)
+                            .set(workoutData)
+                            .addOnSuccessListener {
+                                Log.d("Firestore", "Document added with ID: $documentName")
+                                Toast.makeText(this, "Workout successfully added", Toast.LENGTH_SHORT).show()
+                            }
+                            .addOnFailureListener { e ->
+                                Log.e("Firestore", "Error adding document", e)
+                            }
                     }
             } else {
                 Log.d("Firestore", "No data to write")

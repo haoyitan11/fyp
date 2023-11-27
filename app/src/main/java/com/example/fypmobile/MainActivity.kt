@@ -1,19 +1,8 @@
 package com.example.fypmobile
 
-import BicepsAdapter
-import ChestAdapter
-import android.content.Intent
+import WorkoutDisplayFragment
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.View
-import android.widget.EditText
-import android.widget.FrameLayout
-import android.widget.ListView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -26,9 +15,9 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.exercise-> {
+                R.id.workout-> {
                     // Load Home Fragment
-                    loadFragment(ExerciseDisplayFragment())
+                    loadFragment(WorkoutDisplayFragment())
                     true
                 }
 

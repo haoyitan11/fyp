@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".ExerciseSettingFragment">
+    tools:context=".WorkoutSettingFragment">
 
     <FrameLayout
-        android:id="@+id/frame"
+        android:id="@+id/frame_workout_setting"
         android:layout_width="369dp"
         android:layout_height="517dp"
         android:paddingTop="15dp"

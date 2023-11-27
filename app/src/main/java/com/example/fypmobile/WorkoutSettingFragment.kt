@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 
@@ -21,10 +22,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ExerciseSettingFragment.newInstance] factory method to
+ * Use the [WorkoutSettingFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ExerciseSettingFragment : Fragment() {
+class WorkoutSettingFragment : Fragment() {
 
     private lateinit var chestText: TextView
     private lateinit var chestList: ListView
@@ -35,12 +36,18 @@ class ExerciseSettingFragment : Fragment() {
     private lateinit var searchEditText: EditText
     private var chestCategory: MutableList<String> = mutableListOf()
     private var bicepsCategory: MutableList<String> = mutableListOf()
+    private lateinit var chervonLeft: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_exerciseset, container, false)
+        val view = inflater.inflate(R.layout.fragment_workoutset, container, false)
+
+        chervonLeft = view.findViewById(R.id.chervonleft) // Make sure the ID matches your layout
+        chervonLeft.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
 
         // Initialize Views
         chestText = view.findViewById(R.id.chestText)
@@ -100,14 +107,14 @@ class ExerciseSettingFragment : Fragment() {
     private fun setupListViewClickListeners() {
         chestList.setOnItemClickListener { _, _, position, _ ->
             val text = chestAdapter.getItem(position)
-            val intent = Intent(activity, ExerciseAdd::class.java)
+            val intent = Intent(activity, WorkoutAdd::class.java)
             intent.putExtra("EXERCISE_NAME", text)
             startActivity(intent)
         }
 
         bicepsList.setOnItemClickListener { _, _, position, _ ->
             val text = bicepsAdapter.getItem(position)
-            val intent = Intent(activity, ExerciseAdd::class.java)
+            val intent = Intent(activity, WorkoutAdd::class.java)
             intent.putExtra("EXERCISE_NAME", text)
             startActivity(intent)
         }
@@ -170,5 +177,11 @@ class ExerciseSettingFragment : Fragment() {
     }
 
     // ... similar to the ExerciseSetting class
+    companion object {
+        fun newInstance(): WorkoutSettingFragment {
+            return WorkoutSettingFragment()
+        }
+    }
+
 
 }

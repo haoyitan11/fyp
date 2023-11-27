@@ -39,14 +39,14 @@
             app:layout_constraintVertical_bias="0.078" />
 
         <TextView
-            android:id="@+id/exerciseName"
+            android:id="@+id/workoutName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="56dp"
             android:layout_marginEnd="168dp"
             android:layout_marginBottom="12dp"
             android:fontFamily="@font/dohyeon1"
-            android:text="Exercise Name"
+            android:text="Workout Name"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -57,7 +57,7 @@
             app:layout_constraintVertical_bias="0.163" />
 
         <CalendarView
-            android:id="@+id/exerciseDate"
+            android:id="@+id/workoutDate"
             android:layout_width="326dp"
             android:layout_height="294dp"
             android:layout_marginStart="42dp"

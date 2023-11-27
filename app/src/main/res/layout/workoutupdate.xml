@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:fontFamily="@font/dohyeon1"
+            android:text="Back"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.314"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.078" />
+
+        <ImageView
+            android:id="@+id/chervonleft3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.124"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.066"
+            app:srcCompat="@drawable/chervon_left" />
+
+        <ImageView
+            android:id="@+id/updateIcon"
+            android:layout_width="72dp"
+            android:layout_height="64dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.781"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.056"
+            app:srcCompat="@drawable/updateicon" />
+
+        <TextView
+            android:id="@+id/workUpdName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:fontFamily="@font/dohyeon1"
+            android:text="Fiat Barbell Bench Press"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.284"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.218" />
+
+        <TextView
+            android:id="@+id/workUpdDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:fontFamily="@font/dohyeon1"
+            android:text="2023-11-12"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.283" />
+
+        <FrameLayout
+            android:layout_width="308dp"
+            android:layout_height="119dp"
+            android:background="@drawable/whitebutton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.436"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4">
+
+            <TextView
+                android:id="@+id/repRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dohyeon1"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="Reps Record : 10"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/maxRepRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dohyeon1"
+                android:paddingLeft="10dp"
+                android:paddingTop="30dp"
+                android:text="Previous Max Reps : 5"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/weightRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dohyeon1"
+                android:paddingLeft="10dp"
+                android:paddingTop="70dp"
+                android:text="Weight Record : 1"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/maxWeightRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dohyeon1"
+                android:paddingLeft="10dp"
+                android:paddingTop="90dp"
+                android:text="Previous Max Weight : 1"
+                android:textSize="16sp" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="312dp"
+            android:layout_height="220dp"
+            android:background="@drawable/whitebutton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.763">
+
+            <LinearLayout
+                android:id="@+id/setsContainer2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="40dp"
+                android:orientation="vertical"></LinearLayout>
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="36dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/pinkbutton"
+                android:gravity="center"
+                android:text="Set"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="35dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/pinkbutton"
+                android:gravity="center"
+                android:text="Kg" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="41dp"
+                android:layout_height="27dp"
+                android:layout_marginLeft="170dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/pinkbutton"
+                android:gravity="center"
+                android:text="Reps" />
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

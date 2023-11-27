@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ExerciseAdd"/>
+        <activity android:name=".WorkoutAdd"/>
+        <activity android:name=".WorkoutUpdate"/>
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
